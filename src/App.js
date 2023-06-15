@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import { createContext, useState } from "react";
+import "./App.css";
+import { FirstForm } from "./components/FirstForm";
+import { SecondForm } from "./components/SecondForm";
+
+export const LoginContext = createContext();
 
 function App() {
+  const [login, setLogin] = useState("");
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <LoginContext.Provider
+        value={{
+          login,
+          setLogin,
+        }}
+      >
+        <FirstForm />
+        <SecondForm />
+      </LoginContext.Provider>
     </div>
   );
 }
